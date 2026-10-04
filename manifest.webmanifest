@@ -1,0 +1,16 @@
+{
+  "name": "モンハンワイルズ 金冠チェックリスト",
+  "short_name": "ワイルズ金冠",
+  "description": "モンスターハンターワイルズの最大・最小・限界最大・限界最小を管理するチェックリスト",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1f1f1f",
+  "theme_color": "#1f1f1f",
+  "lang": "ja",
+  "icons": [
+    {"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
