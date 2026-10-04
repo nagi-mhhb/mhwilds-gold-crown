@@ -28,3 +28,10 @@ GitHub Pages にそのままアップロードして公開できる構成です�
 - `icons/icon-192.png` — アプリアイコン
 - `icons/icon-512.png` — アプリアイコン
 - `.nojekyll` — GitHub Pages用
+
+
+### v6 修正
+- リセットで全チェックを解除
+- 旧バージョンの保存データもリセット時に削除
+- チェックのON/OFF後に達成メーターと%を確実に更新
+- Service Workerのキャッシュバージョンを更新
