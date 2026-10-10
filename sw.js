@@ -1,4 +1,4 @@
-const CACHE_NAME = "mhwilds-gold-crown-v24";
+const CACHE_NAME = "mhwilds-gold-crown-v29";
 const APP_SHELL = [
   './',
   './index.html',
