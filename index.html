@@ -74,9 +74,13 @@ body.compact-mode .na{width:70px;font-size:10px}
 #list .info{grid-column:2;grid-row:1;min-width:0;width:100%}
 #list .name{font-size:12px;line-height:1.25;overflow-wrap:anywhere}
 #list .limits{display:flex;flex-direction:column;gap:2px;margin-top:3px;font-size:9px}
-#list .limit{padding:2px 3px;white-space:normal;line-height:1.2}
-#list .completion-status{gap:2px;margin-top:3px}
-#list .completion-badge{font-size:8px;padding:2px 3px}
+#list .limit{padding:2px 3px;white-space:nowrap;line-height:1.2;min-width:0;font-size:9px}
+#list .limits{display:grid;grid-template-columns:minmax(0,1fr) 30px;align-items:start;gap:1px 3px;margin-top:2px;font-size:9px}
+#list .limit-values{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:19px 19px;row-gap:1px;align-content:start;align-items:stretch;min-width:0;min-height:39px;margin:0;padding:0}
+#list .limit-values .limit{box-sizing:border-box;align-self:stretch;min-height:19px;height:19px;max-height:19px;display:flex;align-items:center;overflow:hidden;font-size:8.5px;letter-spacing:-.2px;padding:1px 3px;white-space:nowrap;line-height:1;margin:0;border-radius:6px}
+#list .completion-status{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:19px 19px;row-gap:1px;align-items:stretch;align-content:start;justify-items:stretch;gap:1px;margin:0;padding:0;min-width:30px;width:30px;height:39px;box-sizing:border-box}
+#list .completion-badge{box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:7.5px;padding:0;white-space:nowrap;height:19px;max-height:19px;min-height:19px;line-height:1;border-radius:4px;justify-self:stretch;align-self:stretch;min-width:0;width:100%;margin:0}
+#list .completion-badge.empty{visibility:hidden}
 #list .badges{grid-column:1/-1;grid-row:2;width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px}
 #list .crown{width:100%;min-width:0;height:35px;border-radius:7px;font-size:15px}
 #list .crown .icon{height:20px}
@@ -197,12 +201,12 @@ function render(){
     const badges=x.max===null
       ? `<div class="na">対象外</div>`
       : `<div class="badges">${btn(i,"max","最大")}${btn(i,"min","最小")}${btn(i,"lmax","限界最大")}${btn(i,"lmin","限界最小")}</div>`;
+    const statusGold=goldComplete ? `<span class="completion-badge gold">👑済</span>` : "";
+    const statusLimit=(x.lmax===1 && x.lmin===1) ? `<span class="completion-badge limit">💎済</span>` : "";
+    const status=(x.max!==null) ? `<div class="completion-status">${statusGold || '<span class="completion-badge empty">👑済</span>'}${statusLimit || '<span class="completion-badge empty">💎済</span>'}</div>` : "";
     const limits=x.max===null || x.limitMin==null || x.limitMax==null ? ""
-      : `<div class="limits"><span class="limit max">💎 限界最大 ${x.limitMax}</span><span class="limit min">💎 限界最小 ${x.limitMin}</span></div>`;
-    const statusGold=goldComplete ? `<span class="completion-badge gold">👑 金冠済</span>` : "";
-    const statusLimit=(x.lmax===1 && x.lmin===1) ? `<span class="completion-badge limit">💎 限界済</span>` : "";
-    const status=(statusGold || statusLimit) ? `<div class="completion-status">${statusGold}${statusLimit}</div>` : "";
-    r.innerHTML=pic+`<div class="info"><div class="name">${x.name}</div>${limits}${status}</div>`+badges;
+      : `<div class="limits"><div class="limit-values"><span class="limit max">💎 限界最大 ${x.limitMax}</span><span class="limit min">💎 限界最小 ${x.limitMin}</span></div>${status}</div>`;
+    r.innerHTML=pic+`<div class="info"><div class="name">${x.name}</div>${limits}</div>`+badges;
     listEl.appendChild(r);
   });
   updateAchievementMeters();
