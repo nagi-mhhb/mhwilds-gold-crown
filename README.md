@@ -1,6 +1,6 @@
 # モンハンワイルズ 金冠チェックリスト PWA
 
-GitHub Pages にそのままアップロードして公開できる構成です。
+GitHub Pages にそのままアップロードして公開できる構成です。王冠アイコン・宝石アイコンは index.html 内に埋め込み済みのため、画像ファイルを別途配置する必要はありません。
 
 ## 公開手順
 
@@ -58,3 +58,14 @@ GitHub Pages にそのままアップロードして公開できる構成です�
 - モンスターアイコンを大きく表示
 - 画像生成後にプレビュー画面を表示
 - プレビュー下部に画像保存・共有ボタンを追加。対応端末では画像ファイルを共有メニューからXへ送信できます
+
+
+V70 changes: reduced limit-size gem icons (limit minimum smaller than limit maximum), tightened and left-aligned the four-item icon legend, and optimized checklist tap handling to update only the affected row when the full list is shown.
+
+
+## V72 修正
+- 進捗状況のアイコンと文字の縦位置を中央揃えに統一。
+- 検索・表示設定下の最大・最小金冠アイコンと文字の間隔を、限界サイズの説明と同じ約3pxに調整。
+
+
+V72: 初期表示の軽量化として、モンスター初期データを非実行JSONブロックに分離し、モンスター画像の遅延読み込みと非同期デコードを追加。
