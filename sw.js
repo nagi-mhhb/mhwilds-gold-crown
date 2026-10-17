@@ -1,6 +1,6 @@
 /* V76: update-aware cache strategy for GitHub Pages */
 const CACHE_PREFIX = "mhwilds-crown-pwa-";
-const CACHE_VERSION = "v76";
+const CACHE_VERSION = "v77";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 
 self.addEventListener("install", event => {
